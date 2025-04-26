@@ -3,7 +3,10 @@
     "target": "ES2021",
     "lib": ["ES2021", "DOM"],
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
     "strict": true,
     "jsx": "react-jsx",
     "declaration": false,
@@ -14,7 +17,8 @@
     "paths": {
       "@common/*": ["src/common/*"]
     },
-    "types": ["chrome", "node"]
+    "types": ["chrome", "node"],
+    "typeRoots": ["./node_modules/@types"]
   },
   "include": ["src/**/*", "manifest.json", "vite.config.ts"]
 }
