@@ -80,6 +80,54 @@ type RawVerdictString = "true" | "false" | "unclear";
  * @returns
  *   One of `"true"`, `"false"`, or `"unclear"`, ready for UI rendering.
  */
+/**
+ * Determine the verdict for a claim based on its truth value and confidence.
+ *
+ * @param truth - The truth value (true/false).
+ * @param confidence - The confidence score (0-100).
+ * @returns The verdict (true/false/unclear).
+ */
+export function determineVerdict(
+  truth: string,
+  confidence: number,
+): "true" | "false" | "unclear" {
+  // Normalize confidence to 0-100
+  confidence = Math.max(0, Math.min(100, confidence));
+
+  // If confidence is too low, mark as unclear
+  if (confidence < 75) {
+    return "unclear";
+  }
+
+  // Return verdict based on truth value
+  if (truth === "true") return "true";
+  if (truth === "false") return "false";
+  return "unclear";
+}
+
+/**
+ * Post-processes a raw Sonar verdict into the canonical label used by
+ * Check Mate's UI components.
+ *
+ * @example
+ *   getVerdict({ verdict: "false", citations: [c1, c2, c3], confidence: 0.91 })
+ *   // → "false"
+ *
+ *   getVerdict({ verdict: "true", citations: [], confidence: 0.42 })
+ *   // → "unclear"  (fails confidence guard)
+ *
+ * @param raw
+ *   Subset of Sonar result required for the heuristic.  Using *Pick* keeps
+ *   the call-sites tidy and avoids accidentally relying on other fields.
+ *
+ * @param threshold
+ *   Minimum confidence (inclusive) needed to accept Sonar's judgement
+ *   wholesale.  The value is surfaced to users via the Options page and must
+ *   therefore be runtime-validated.  Defaults to `0.7` per spec.
+ *
+ * @returns
+ *   One of `"true"`, `"false"`, or `"unclear"`, ready for UI rendering.
+ */
 export function getVerdict(
   raw: Pick<ClaimVerdict, "verdict" | "citations" | "confidence">,
   threshold = 0.7,

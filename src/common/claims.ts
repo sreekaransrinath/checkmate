@@ -2,17 +2,7 @@
  * @file src/common/claims.ts
  *
  * @description
- * Splits raw tweet text into individual factual-claim strings that can be sent
- * to the Perplexity Sonar API.  The logic follows §3.2 of the technical spec:
- *
- *  • Sentence segmentation with an abbreviation / decimal-number guard.
- *  • Fragments shorter than 10 characters are discarded.
- *  • If more than {@link MAX_CLAIMS} candidates remain, we keep the
- *    {@link MAX_CLAIMS} **longest** ones, restoring their original order so
- *    the UI still reads naturally.
- *
- * Design goals & trade-offs
- * ────────────────────────────────────────────────────────────────────────────
+ * Functions for extracting and processing claims from tweet text.
  * • **Zero dependencies** – avoids bringing in heavy NLP libraries that would
  *   bloat the content-script bundle.  A simple heuristic is “good enough” for
  *   tweet-sized inputs (≤ 280 chars).

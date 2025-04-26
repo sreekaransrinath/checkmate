@@ -52,7 +52,14 @@ module.exports = {
     "react/react-in-jsx-scope": "off",
     "import/no-extraneous-dependencies": [
       "error",
-      { devDependencies: ["**/tests/**", "**/*.test.ts", "**/*.test.tsx"] },
+      {
+        devDependencies: [
+          "**/tests/**",
+          "**/*.test.ts",
+          "**/*.test.tsx",
+          "jest.setup.ts",
+        ],
+      },
     ],
     "no-void": ["error", { allowAsStatement: true }],
     "react/require-default-props": "off",
