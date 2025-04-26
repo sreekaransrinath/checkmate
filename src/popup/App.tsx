@@ -24,6 +24,7 @@ import {
 } from "./store";
 import { VerdictRow } from "./components/VerdictRow";
 import { IconButton } from "./components/IconButton";
+import { formatResults } from "./utils/formatResults";
 
 const CopyIcon: React.FC = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -41,6 +42,18 @@ const CopyIcon: React.FC = () => (
   </svg>
 );
 
+const CheckIcon: React.FC = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <path
+      d="M13.5 4.5l-7 7L3 8"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 const App: React.FC = () => {
   // Load initial data when popup opens
   useInitialDataLoad();
@@ -50,11 +63,36 @@ const App: React.FC = () => {
   const result = useAnalysisResult();
   const error = useError();
 
-  // Handle copy button click
-  const handleCopy = React.useCallback(() => {
-    // Will be implemented in Step 16
-    console.log("Copy button clicked");
+  // Track copy success state
+  const [copySuccess, setCopySuccess] = React.useState(false);
+  const copyTimeoutRef = React.useRef<number>();
+
+  // Reset copy success state after delay
+  React.useEffect(() => {
+    return () => {
+      if (copyTimeoutRef.current) {
+        window.clearTimeout(copyTimeoutRef.current);
+      }
+    };
   }, []);
+
+  // Handle copy button click
+  const handleCopy = React.useCallback(async () => {
+    if (!result) return;
+
+    try {
+      const formattedText = formatResults(result);
+      await navigator.clipboard.writeText(formattedText);
+
+      // Show success state briefly
+      setCopySuccess(true);
+      copyTimeoutRef.current = window.setTimeout(() => {
+        setCopySuccess(false);
+      }, 2000);
+    } catch (err) {
+      console.error("Failed to copy results:", err);
+    }
+  }, [result]);
 
   return (
     <main className="w-[400px] min-h-[300px] bg-white text-neutral-900">
@@ -68,9 +106,10 @@ const App: React.FC = () => {
 
         {result && (
           <IconButton
-            icon={<CopyIcon />}
-            label="Copy results"
+            icon={copySuccess ? <CheckIcon /> : <CopyIcon />}
+            label={copySuccess ? "Copied!" : "Copy results"}
             onClick={handleCopy}
+            className={copySuccess ? "text-green-600" : undefined}
           />
         )}
       </header>

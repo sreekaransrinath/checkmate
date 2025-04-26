@@ -20,7 +20,7 @@ import React from "react";
 interface IconButtonProps {
   icon: React.ReactNode;
   label: string;
-  onClick: () => void;
+  onClick: () => void | Promise<void>;
   disabled?: boolean;
   className?: string;
 }
@@ -35,7 +35,9 @@ export const IconButton: React.FC<IconButtonProps> = ({
   return (
     <button
       type="button"
-      onClick={onClick}
+      onClick={() => {
+        void onClick();
+      }}
       disabled={disabled}
       className={`
         inline-flex items-center justify-center
