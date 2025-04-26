@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="64" cy="64" r="60" fill="#1DA1F2"/>
+  
+  <!-- Knight piece -->
+  <path d="M40 88V72L52 60C52 60 56 56 56 52C56 48 52 44 52 44H44L48 40H60C60 40 68 44 68 52C68 60 60 68 60 68L56 72V88H40Z" fill="white"/>
+  
+  <!-- Checkmark -->
+  <path d="M76 52L84 60L100 44" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
