@@ -33,6 +33,7 @@ import type {
   AnalysisResult,
   ClaimVerdict,
 } from "../common/types";
+import { getBadgeStatus, setGlobalBadge, initBadgeHandling } from "./badge";
 
 /* -------------------------------------------------------------------------- */
 /*                              Constants & Types                             */
@@ -170,8 +171,11 @@ async function handleCheckTweet(
       verdicts,
     };
 
-    await storeResult(result);
-    await notifyContentScript(sender.tab.id, true);
+    await Promise.all([
+      storeResult(result),
+      notifyContentScript(sender.tab.id, true),
+      setGlobalBadge(getBadgeStatus(verdicts.map((v) => v.verdict))),
+    ]);
   } catch (err) {
     console.error("Tweet analysis failed:", err);
     if (sender.tab?.id) {
@@ -204,7 +208,5 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   return true; // We'll call sendResponse asynchronously
 });
 
-// Ensure the service worker stays active
-chrome.runtime.onInstalled.addListener(() => {
-  console.log("Check Mate service worker installed");
-});
+// Initialize badge handling
+initBadgeHandling();
