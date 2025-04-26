@@ -1,0 +1,83 @@
+/**
+ * @file src/styles/tweet.css
+ *
+ * Scoped styles for the Check Mate button injected into tweet action bars.
+ * These styles match Twitter's design system while maintaining our branding.
+ */
+
+.cm-btn {
+  /* Match Twitter's action button styles */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  min-height: 32px;
+  border: none;
+  background: transparent;
+  border-radius: 9999px; /* Full round */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  outline: none;
+}
+
+.cm-btn:hover {
+  background-color: rgba(29, 155, 240, 0.1); /* Twitter blue with opacity */
+}
+
+.cm-btn:focus-visible {
+  box-shadow: 0 0 0 2px rgb(29, 155, 240);
+}
+
+.cm-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Status indicators */
+.cm-btn[data-status="success"] {
+  color: #3cb371; /* Success Green */
+}
+
+.cm-btn[data-status="error"] {
+  color: #f44336; /* Error Red */
+}
+
+.cm-btn[data-status="unclear"] {
+  color: #9e9e9e; /* Neutral Grey */
+}
+
+/* Loading state */
+.cm-btn[data-loading="true"] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Toast styles */
+.cm-toast {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  z-index: 9999;
+  animation: cm-toast-in 0.3s ease;
+}
+
+@keyframes cm-toast-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 16px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
