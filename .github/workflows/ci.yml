@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: 8
+        run_install: false
+
+    - name: Get pnpm store directory
+      shell: bash
+      run: |
+        echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_ENV
+
+    - name: Cache pnpm dependencies
+      uses: actions/cache@v3
+      with:
+        path: ${{ env.STORE_PATH }}
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-store-
+
+    - name: Install dependencies
+      run: pnpm install
+
+    - name: Run linting
+      run: pnpm lint
+
+    - name: Run type checking
+      run: pnpm type-check
+
+    - name: Run unit tests
+      run: pnpm test
+
+    - name: Install Playwright browsers
+      run: pnpm playwright install --with-deps chromium
+
+    - name: Run E2E tests
+      run: pnpm e2e
+
+    - name: Build extension
+      run: pnpm build
+
+    - name: Upload extension artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: checkmate-extension
+        path: dist/
