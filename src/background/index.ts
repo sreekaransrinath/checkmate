@@ -165,9 +165,11 @@ async function handleCheckTweet(
       }),
     );
 
-    // Store results and notify content script
+    // Store result and notify content script
     const result: AnalysisResult = {
       tweetId: request.tweetId,
+      text: request.text,
+      claims,
       verdicts,
     };
 

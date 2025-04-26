@@ -105,7 +105,12 @@ export interface ClaimVerdict {
  * the most recent analysis instantly without another network round-trip.
  */
 export interface AnalysisResult {
+  /** The tweet ID. */
   readonly tweetId: string;
+  /** The full tweet text. */
+  readonly text: string;
+  /** List of claims extracted from the tweet. */
+  readonly claims: string[];
   /** Ordered list (by claim position) of fact-check verdicts. */
   readonly verdicts: ClaimVerdict[];
 }
