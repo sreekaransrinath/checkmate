@@ -41,7 +41,10 @@ module.exports = {
   settings: {
     react: { version: "detect" },
     "import/resolver": {
-      typescript: {},
+      node: {
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
+        moduleDirectory: ["node_modules", "src/"],
+      },
     },
   },
   rules: {
@@ -57,6 +60,9 @@ module.exports = {
     "jsx-a11y/anchor-is-valid": "off",
     "class-methods-use-this": "off",
     "@typescript-eslint/no-floating-promises": ["error", { ignoreIIFE: true }],
+    "import/extensions": ["error", "never"],
+    "import/no-duplicates": "off",
+    "import/namespace": "off",
   },
   overrides: [
     {
