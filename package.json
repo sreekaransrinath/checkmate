@@ -1,56 +1,49 @@
 {
-    "name": "checkmate-extension",
-    "version": "0.1.0",
-    "private": true,
-    "type": "module",
-    "description": "Check Mate – a Chrome extension to fact-check tweets with one click.",
-    "author": "o3 Assistant <support@openai.com>",
-    "license": "MIT",
-    "scripts": {
-      "dev": "vite",
-      "build": "vite build",
-      "preview": "vite preview",
-      "type-check": "tsc --noEmit",
-      "lint": "eslint . --ext .ts,.tsx --max-warnings 0",
-      "lint:fix": "eslint . --ext .ts,.tsx --fix",
-      "format": "prettier --write .",
-      "prepare": "husky install"
-    },
-    "dependencies": {
-      "react": "^18.3.1",
-      "react-dom": "^18.3.1"
-    },
-    "devDependencies": {
-      "@types/chrome": "^0.0.317",
-      "@types/react": "^18.3.20",
-      "@types/react-dom": "^18.3.6",
-      "rollup-plugin-chrome-extension": "^3.6.12",
-      "typescript": "^5.8.3",
-      "vite": "^5.4.18",
-  
-      /* Linting / Formatting */
-      "eslint": "^8.58.0",
-      "eslint-config-airbnb": "^19.0.4",
-      "eslint-config-airbnb-typescript": "^17.1.0",
-      "eslint-plugin-import": "^2.29.1",
-      "eslint-plugin-jsx-a11y": "^6.8.0",
-      "eslint-plugin-react": "^7.34.1",
-      "eslint-plugin-react-hooks": "^4.6.0",
-      "@typescript-eslint/eslint-plugin": "^6.11.0",
-      "@typescript-eslint/parser": "^6.11.0",
-      "prettier": "^3.2.5",
-      "eslint-config-prettier": "^9.1.0",
-  
-      /* Tailwind / PostCSS */
-      "tailwindcss": "^3.4.4",
-      "autoprefixer": "^10.4.16",
-      "postcss": "^8.4.34",
-  
-      /* Husky */
-      "husky": "^9.0.11"
-    },
-    "engines": {
-      "node": ">=18.0.0"
-    }
+  "name": "checkmate-extension",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Check Mate – a Chrome extension to fact-check tweets with one click.",
+  "author": "o3 Assistant <support@openai.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint . --ext .ts,.tsx --max-warnings 0",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
+    "format": "prettier --write .",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.317",
+    "@types/node": "^20.12.7",
+    "@types/react": "^18.3.20",
+    "@types/react-dom": "^18.3.6",
+    "autoprefixer": "^10.4.16",
+    "eslint": "8.57.1",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-playwright": "^0.15.2",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^9.0.11",
+    "postcss": "^8.4.34",
+    "prettier": "^3.2.5",
+    "rollup-plugin-chrome-extension": "^3.6.12",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.8.3",
+    "vite": "^5.4.18"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
-  
+}

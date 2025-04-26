@@ -1,24 +1,22 @@
 {
-    "manifest_version": 3,
-    "name": "Check Mate",
-    "description": "Debunk misinformation on Twitter/X with one click.",
-    "version": "0.1.0",
-    "action": {
-      "default_title": "Check Mate"
-    },
-    "icons": {
-      "16": "public/icons/knight_16.png",
-      "32": "public/icons/knight_32.png",
-      "128": "public/icons/knight_128.png"
-    },
-    "background": {
-      "service_worker": "src/background/index.ts",
-      "type": "module"
-    },
-    "permissions": [],
-    "host_permissions": [],
-    "content_scripts": [],
-    "options_page": "options.html"
-  }
-
-  
+  "manifest_version": 3,
+  "name": "Check Mate",
+  "description": "Debunk misinformation on Twitter/X with one click.",
+  "version": "0.1.0",
+  "action": {
+    "default_title": "Check Mate"
+  },
+  "icons": {
+    "16": "public/icons/knight_16.png",
+    "32": "public/icons/knight_32.png",
+    "128": "public/icons/knight_128.png"
+  },
+  "background": {
+    "service_worker": "src/background/index.ts",
+    "type": "module"
+  },
+  "permissions": [],
+  "host_permissions": [],
+  "content_scripts": [],
+  "options_page": "options.html"
+}
