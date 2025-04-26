@@ -4,7 +4,7 @@
     "private": true,
     "type": "module",
     "description": "Check Mate – a Chrome extension to fact-check tweets with one click.",
-    "author": "Sreekaran Srinath",
+    "author": "o3 Assistant <support@openai.com>",
     "license": "MIT",
     "scripts": {
       "dev": "vite",
@@ -12,19 +12,42 @@
       "preview": "vite preview",
       "type-check": "tsc --noEmit",
       "lint": "eslint . --ext .ts,.tsx --max-warnings 0",
-      "format": "prettier --write ."
+      "lint:fix": "eslint . --ext .ts,.tsx --fix",
+      "format": "prettier --write .",
+      "prepare": "husky install"
     },
     "dependencies": {
       "react": "^18.3.1",
       "react-dom": "^18.3.1"
     },
     "devDependencies": {
-      "@types/chrome": "^0.0.274",
-      "@types/react": "^18.3.5",
-      "@types/react-dom": "^18.3.2",
-      "rollup-plugin-chrome-extension": "^3.11.0",
-      "typescript": "^5.4.4",
-      "vite": "^5.2.8"
+      "@types/chrome": "^0.0.317",
+      "@types/react": "^18.3.20",
+      "@types/react-dom": "^18.3.6",
+      "rollup-plugin-chrome-extension": "^3.6.12",
+      "typescript": "^5.8.3",
+      "vite": "^5.4.18",
+  
+      /* Linting / Formatting */
+      "eslint": "^8.58.0",
+      "eslint-config-airbnb": "^19.0.4",
+      "eslint-config-airbnb-typescript": "^17.1.0",
+      "eslint-plugin-import": "^2.29.1",
+      "eslint-plugin-jsx-a11y": "^6.8.0",
+      "eslint-plugin-react": "^7.34.1",
+      "eslint-plugin-react-hooks": "^4.6.0",
+      "@typescript-eslint/eslint-plugin": "^6.11.0",
+      "@typescript-eslint/parser": "^6.11.0",
+      "prettier": "^3.2.5",
+      "eslint-config-prettier": "^9.1.0",
+  
+      /* Tailwind / PostCSS */
+      "tailwindcss": "^3.4.4",
+      "autoprefixer": "^10.4.16",
+      "postcss": "^8.4.34",
+  
+      /* Husky */
+      "husky": "^9.0.11"
     },
     "engines": {
       "node": ">=18.0.0"

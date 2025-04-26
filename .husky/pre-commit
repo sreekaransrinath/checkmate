@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+# Husky pre-commit hook for Check Mate
+# Stops the commit if formatting, linting, or type-checking fail.
+
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔍  Running Prettier..."
+pnpm prettier --check .
+
+echo "🔍  Running ESLint..."
+pnpm lint
+
+echo "🔍  Running TypeScript type-check..."
+pnpm type-check

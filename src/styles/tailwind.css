@@ -1,0 +1,13 @@
+/**
+ * @file src/styles/tailwind.css
+ *
+ * Tailwind entry point. Import this file in any React entry (popup/options)
+ * or in the content-script style bundle to gain Tailwind utility classes.
+ */
+
+/* Tailwind layers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom global tweaks (if any) can follow here */
