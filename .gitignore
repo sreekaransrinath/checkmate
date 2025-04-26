@@ -1,0 +1,14 @@
+# Node & tooling
+node_modules/
+dist/
+.vite/
+pnpm-lock.yaml
+
+# Editor / OS
+.idea/
+.vscode/
+.DS_Store
+
+# Env / secrets
+.env
+.env.*

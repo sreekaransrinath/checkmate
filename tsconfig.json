@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+      "target": "ES2021",
+      "lib": ["ES2021", "DOM"],
+      "module": "ESNext",
+      "moduleResolution": "Node",
+      "strict": true,
+      "jsx": "react-jsx",
+      "declaration": false,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "baseUrl": ".",
+      "paths": {
+        "@common/*": ["src/common/*"]
+      },
+      "types": ["chrome"]
+    },
+    "include": ["src/**/*", "manifest.json", "vite.config.ts"]
+  }
+  
